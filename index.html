@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 이미지 생성기</title>
+    <link rel="stylesheet" href="index.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.sh/@google/genai@1.0.0"
+        }
+      }
+    </script>
+</head>
+<body>
+    <main>
+        <h1>AI 이미지 생성기</h1>
+        <p class="description">최대 2개의 이미지를 업로드하거나 프롬프트만으로 새로운 AI 이미지를 만들어 보세요.</p>
+
+        <div id="controls">
+            <div id="image-inputs">
+                <div class="image-input-container">
+                    <label for="image-input-1">이미지 1 (선택)</label>
+                    <div class="image-drop-zone">
+                        <img id="preview-1" class="image-preview" src="" alt="이미지 1 미리보기">
+                        <span class="upload-placeholder">+</span>
+                    </div>
+                    <input type="file" id="image-input-1" accept="image/png, image/jpeg, image/webp" class="hidden-file-input">
+                </div>
+                <div class="image-input-container">
+                    <label for="image-input-2">이미지 2 (선택)</label>
+                    <div class="image-drop-zone">
+                        <img id="preview-2" class="image-preview" src="" alt="이미지 2 미리보기">
+                        <span class="upload-placeholder">+</span>
+                    </div>
+                    <input type="file" id="image-input-2" accept="image/png, image/jpeg, image/webp" class="hidden-file-input">
+                </div>
+            </div>
+
+            <div id="prompt-suggestions">
+                <label>프롬프트 예시 (클릭하여 사용)</label>
+                <div id="suggestion-buttons">
+                    <!-- Buttons will be added here by JS -->
+                </div>
+            </div>
+
+            <div id="prompt-container">
+                <textarea id="prompt-input" placeholder="만들고 싶은 이미지에 대해 한국어로 설명하고 '번역' 버튼을 누르거나, 영어로 직접 입력해주세요. (예: 우주를 나는 고양이)"></textarea>
+                <button id="translate-btn" title="한글 프롬프트를 영어로 번역">번역</button>
+            </div>
+
+            <button id="generate-btn" disabled>이미지 생성하기</button>
+        </div>
+
+        <div id="output-area">
+            <h2>결과</h2>
+            <div id="result-container">
+                <div id="loader" class="hidden"></div>
+                <img id="result-image" alt="생성된 이미지 결과">
+                <p id="status-message">AI 이미지 생성기를 시작합니다...</p>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="index.tsx"></script>
+</body>
+</html>
